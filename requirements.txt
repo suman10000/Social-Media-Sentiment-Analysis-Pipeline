@@ -1,0 +1,7 @@
+pandas
+numpy
+vaderSentiment
+pyspark
+snowflake-connector-python
+streamlit
+plotly
