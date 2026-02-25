@@ -1,48 +1,45 @@
-📊 Social Media Sentiment Analysis Pipeline
+# 📊 Social Media Sentiment Analysis Pipeline
 
-A full-scale modern data engineering pipeline that ingests large-scale social media data, performs sentiment analysis using NLP, processes data with Apache Spark, stores it in Snowflake using a Star Schema warehouse design, applies enterprise-level security controls, and enables advanced analytical insights.
+> A full-scale modern data engineering pipeline that ingests large-scale social media data, performs NLP-based sentiment analysis, processes data using Apache Spark, stores it in Snowflake using a Star Schema warehouse design, applies enterprise-level security controls, and enables advanced analytical insights.
 
-📌 Table of Contents
+---
 
-🚀 Project Overview
+## 📌 Table of Contents
 
-🏗 System Architecture
+- [🚀 Project Overview](#-project-overview)
+- [🏗 System Architecture](#-system-architecture)
+- [🧠 Key Features](#-key-features)
+- [📊 Tech Stack](#-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [⚙ Data Pipeline Flow](#-data-pipeline-flow)
+- [📈 Analytics Capabilities](#-analytics-capabilities)
+- [🔐 Security & Governance](#-security--governance)
+- [⚡ Big Data & Streaming](#-big-data--streaming)
+- [▶ How to Run Locally](#-how-to-run-locally)
+- [📚 What This Project Demonstrates](#-what-this-project-demonstrates)
+- [👨‍💻 Author](#-author)
 
-🧠 Key Features
+---
 
-📊 Tech Stack
-
-📁 Project Structure
-
-⚙ Data Pipeline Flow
-
-📈 Analytics Capabilities
-
-🔐 Security & Governance
-
-⚡ Big Data & Streaming
-
-▶ How to Run Locally
-
-📚 What This Project Demonstrates
-
-👨‍💻 Author
-
-🚀 Project Overview
+## 🚀 Project Overview
 
 This project implements a real-world scalable sentiment analytics platform designed to:
 
-• Process large-scale Twitter data (1.6M+ records)
-• Perform NLP-based sentiment classification
-• Build a structured Data Warehouse (Star Schema)
-• Execute advanced SQL analytics
-• Optimize performance using Snowflake features
-• Apply enterprise security principles
-• Demonstrate Spark batch & streaming processing
+- Process large-scale Twitter data (1.6M+ records)
+- Perform NLP-based sentiment classification
+- Build a structured Data Warehouse (Star Schema)
+- Execute advanced SQL analytics
+- Optimize performance using Snowflake features
+- Apply enterprise security principles
+- Demonstrate Spark batch & streaming processing
 
 The architecture mirrors production-grade data engineering systems used in modern analytics-driven organizations.
 
-🏗 System Architecture
+---
+
+## 🏗 System Architecture
+
+```
 Raw Social Media Dataset (CSV)
             ↓
 Python ETL (Cleaning + NLP Sentiment Analysis)
@@ -62,30 +59,43 @@ Clustering + Time Travel Optimization
 Role-Based Access & Secure Views
             ↓
 Interactive Analytics & Reporting
-🧠 Key Features
+```
 
-✔ Star Schema Data Warehouse Design
-✔ Python-based ETL Pipeline
-✔ NLP Sentiment Analysis (VADER)
-✔ Apache Spark Batch Processing
-✔ Structured Streaming Simulation
-✔ Advanced SQL (CTE, Window Functions, Ranking)
-✔ Snowflake Clustering & Time Travel
-✔ Role-Based Access Control (RBAC)
-✔ Secure View-based Data Masking
-✔ Performance Optimization Strategies
+---
 
-📊 Tech Stack
-Layer	Technology
-ETL	Python, Pandas, VADER
-Big Data	Apache Spark (PySpark)
-Warehouse	Snowflake
-Analytics	Advanced SQL
-Optimization	Clustering, Time Travel
-Security	RBAC + Secure Views
-Streaming	Structured Streaming Simulation
-Version Control	Git & GitHub
-📁 Project Structure
+## 🧠 Key Features
+
+✔ Star Schema Data Warehouse Design  
+✔ Python-based ETL Pipeline  
+✔ NLP Sentiment Analysis (VADER)  
+✔ Apache Spark Batch Processing  
+✔ Structured Streaming Simulation  
+✔ Advanced SQL (CTE, Window Functions, Ranking)  
+✔ Snowflake Clustering & Time Travel  
+✔ Role-Based Access Control (RBAC)  
+✔ Secure View-based Data Masking  
+✔ Performance Optimization Strategies  
+
+---
+
+## 📊 Tech Stack
+
+| Layer           | Technology                         |
+|-----------------|------------------------------------|
+| ETL             | Python, Pandas, VADER              |
+| Big Data        | Apache Spark (PySpark)             |
+| Warehouse       | Snowflake                          |
+| Analytics       | Advanced SQL                       |
+| Optimization    | Clustering, Time Travel            |
+| Security        | RBAC + Secure Views                |
+| Streaming       | Structured Streaming Simulation    |
+| Version Control | Git & GitHub                       |
+
+---
+
+## 📁 Project Structure
+
+```
 Social-Media-Sentiment-Analysis-Pipeline/
 │
 ├── etl.py
@@ -102,104 +112,135 @@ Social-Media-Sentiment-Analysis-Pipeline/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+```
 
-⚙ Data Pipeline Flow
-🔄 Batch ETL
+---
+
+## ⚙ Data Pipeline Flow
+
+### 🔄 Batch ETL
+
+```
 Extract → Clean → Transform → Sentiment Scoring → Load
+```
 
-• Removes noise (URLs, mentions, symbols)
-• Applies VADER sentiment scoring
-• Generates structured dataset
-• Builds surrogate keys for dimensions
-• Constructs fact table
+- Removes noise (URLs, mentions, symbols)
+- Applies VADER sentiment scoring
+- Generates structured dataset
+- Builds surrogate keys for dimensions
+- Constructs fact table
 
-🗄 Data Warehouse Layer
+---
+
+### 🗄 Data Warehouse Layer
 
 Star Schema Implementation:
 
-Fact Table
+**Fact Table**
+- fact_sentiment
 
-fact_sentiment
-
-Dimension Tables
-
-dim_user
-
-dim_date
-
-dim_platform
-
-dim_location
+**Dimension Tables**
+- dim_user
+- dim_date
+- dim_platform
+- dim_location
 
 Designed for efficient OLAP-style analytical querying.
 
-📈 Analytics Capabilities
+---
+
+## 📈 Analytics Capabilities
 
 Examples of insights generated:
 
-📊 Sentiment distribution by date
+- 📊 Sentiment distribution by date
+- 📅 Rolling 7-day sentiment average
+- 🏆 Most negative days ranking
+- 📈 Trend analysis using window functions
+- 🔍 Sentiment segmentation by platform/location
+- ⚡ Hybrid Spark + Snowflake analytics
 
-📅 Rolling 7-day sentiment average
+---
 
-🏆 Most negative days ranking
-
-📈 Trend analysis using window functions
-
-🔍 Sentiment segmentation by platform/location
-
-⚡ Hybrid Spark + Snowflake analytics
-
-🔐 Security & Governance
+## 🔐 Security & Governance
 
 Implemented using enterprise design principles:
 
-Role-Based Access Control (RBAC)
+- Role-Based Access Control (RBAC)
+- Secure View-based column masking
+- Schema-level privilege management
+- Separation of administrative roles
+- Least privilege enforcement model
 
-Secure View-based column masking
+---
 
-Schema-level privilege management
+## ⚡ Big Data & Streaming
 
-Separation of administrative roles
+### 🚀 Apache Spark Batch Processing
 
-Least privilege enforcement model
+- Aggregates sentiment counts
+- Computes daily averages
+- Handles 1.6M+ records efficiently
 
-⚡ Big Data & Streaming
-🚀 Apache Spark Batch Processing
+### 🔄 Structured Streaming (Simulation)
 
-• Aggregates sentiment counts
-• Computes daily averages
-• Handles 1.6M+ records efficiently
+- Real-time sentiment aggregation simulation
+- Micro-batch processing model
+- Continuous sentiment monitoring concept
 
-🔄 Structured Streaming (Simulation)
+---
 
-• Real-time sentiment aggregation simulation
-• Micro-batch processing model
-• Continuous sentiment monitoring concept
+## ▶ How to Run Locally
 
-▶ How to Run Locally
-1️⃣ Install dependencies
+### 1️⃣ Install dependencies
+
+```bash
 pip install -r requirements.txt
-2️⃣ Run ETL Pipeline
+```
+
+### 2️⃣ Run ETL Pipeline
+
+```bash
 python etl.py
-3️⃣ Generate Warehouse Tables
+```
+
+### 3️⃣ Generate Warehouse Tables
+
+```bash
 python warehouse_prep.py
-4️⃣ Run Spark Batch Job
+```
+
+### 4️⃣ Run Spark Batch Job
+
+```bash
 py -3.10 spark_batch.py
-5️⃣ Run Streaming Simulation
+```
+
+### 5️⃣ Run Streaming Simulation
+
+```bash
 py -3.10 spark_streaming.py
-📚 What This Project Demonstrates
+```
+
+---
+
+## 📚 What This Project Demonstrates
 
 This project showcases:
 
-✅ End-to-end Data Engineering pipeline
-✅ Cloud Data Warehouse implementation
-✅ Big Data processing with Spark
-✅ Advanced SQL analytics mastery
-✅ Enterprise security design
-✅ Performance tuning techniques
-✅ Production-style project organization
+✅ End-to-end Data Engineering pipeline  
+✅ Cloud Data Warehouse implementation  
+✅ Big Data processing with Spark  
+✅ Advanced SQL analytics mastery  
+✅ Enterprise security design  
+✅ Performance tuning techniques  
+✅ Production-style project organization  
 
-👨‍💻 Author
+---
 
-Suman Dandapat
-Data Engineering & Analytics Enthusiast
+## 👨‍💻 Author
+
+**Suman Dandapat**  
+Data Engineering & Analytics Enthusiast  
+
+---
