@@ -1,0 +1,5 @@
+# Ignore large data files
+*.csv
+stream_input/
+__pycache__/
+.env
