@@ -1,6 +1,6 @@
 # 📊 Social Media Sentiment Analysis Pipeline
 
-> A full-scale modern data engineering pipeline that ingests large-scale social media data, performs NLP-based sentiment analysis, processes data using Apache Spark, stores it in Snowflake using a Star Schema warehouse design, applies enterprise-level security controls, and enables advanced analytical insights.
+> A full-scale modern data engineering pipeline that ingests large-scale social media data, performs NLP-based sentiment analysis, processes data using Apache Spark, stores it in Snowflake using a Star Schema warehouse design, applies enterprise-level security controls, enables performance optimization, supports semi-structured data handling, and provides interactive analytical insights through a Streamlit dashboard.
 
 ---
 
@@ -15,6 +15,7 @@
 - [📈 Analytics Capabilities](#-analytics-capabilities)
 - [🔐 Security & Governance](#-security--governance)
 - [⚡ Big Data & Streaming](#-big-data--streaming)
+- [📊 Interactive Dashboard](#-interactive-dashboard)
 - [▶ How to Run Locally](#-how-to-run-locally)
 - [📚 What This Project Demonstrates](#-what-this-project-demonstrates)
 - [👨‍💻 Author](#-author)
@@ -30,8 +31,10 @@ This project implements a real-world scalable sentiment analytics platform desig
 - Build a structured Data Warehouse (Star Schema)
 - Execute advanced SQL analytics
 - Optimize performance using Snowflake features
+- Handle semi-structured JSON data
 - Apply enterprise security principles
-- Demonstrate Spark batch & streaming processing
+- Demonstrate Spark batch processing
+- Provide an interactive visualization dashboard
 
 The architecture mirrors production-grade data engineering systems used in modern analytics-driven organizations.
 
@@ -39,42 +42,47 @@ The architecture mirrors production-grade data engineering systems used in moder
 
 ## 🏗 System Architecture
 
+![Architecture Diagram](architecture_diagram.png)
+
 ```
 Raw Social Media Dataset (CSV)
             ↓
-Python ETL (Cleaning + NLP Sentiment Analysis)
+Modular Python ETL (Extract → Transform → Load)
+            ↓
+Sentiment Analysis (VADER NLP)
             ↓
 Dimension & Fact Table Construction
             ↓
 Snowflake Data Warehouse (Star Schema)
             ↓
-Apache Spark Batch Processing
-            ↓
-Structured Streaming Simulation
-            ↓
 Advanced SQL Analytics
             ↓
 Clustering + Time Travel Optimization
             ↓
+Semi-Structured JSON Handling (VARIANT)
+            ↓
 Role-Based Access & Secure Views
             ↓
-Interactive Analytics & Reporting
+Apache Spark Batch Processing
+            ↓
+Interactive Streamlit Dashboard
 ```
 
 ---
 
 ## 🧠 Key Features
 
-✔ Star Schema Data Warehouse Design  
-✔ Python-based ETL Pipeline  
+✔ Modular ETL Architecture (Extract / Transform / Load)  
 ✔ NLP Sentiment Analysis (VADER)  
-✔ Apache Spark Batch Processing  
-✔ Structured Streaming Simulation  
+✔ Star Schema Data Warehouse Design  
 ✔ Advanced SQL (CTE, Window Functions, Ranking)  
 ✔ Snowflake Clustering & Time Travel  
+✔ Semi-Structured Data using VARIANT (JSON)  
 ✔ Role-Based Access Control (RBAC)  
 ✔ Secure View-based Data Masking  
-✔ Performance Optimization Strategies  
+✔ Apache Spark Batch Processing  
+✔ Structured Streaming Simulation  
+✔ Interactive Streamlit Dashboard  
 
 ---
 
@@ -89,6 +97,7 @@ Interactive Analytics & Reporting
 | Optimization    | Clustering, Time Travel            |
 | Security        | RBAC + Secure Views                |
 | Streaming       | Structured Streaming Simulation    |
+| Visualization   | Streamlit, Plotly                  |
 | Version Control | Git & GitHub                       |
 
 ---
@@ -98,16 +107,29 @@ Interactive Analytics & Reporting
 ```
 Social-Media-Sentiment-Analysis-Pipeline/
 │
-├── etl.py
-├── warehouse_prep.py
+├── etl/
+│   ├── config.py
+│   ├── logger.py
+│   ├── extract.py
+│   ├── transform.py
+│   ├── load.py
+│   └── main.py
+│
+├── dashboard/
+│   └── app.py
+│
 ├── spark_batch.py
 ├── spark_streaming.py
 │
 ├── sql/
 │   ├── 01_schema_setup.sql
 │   ├── 02_advanced_queries.sql
-│   └── 03_security.sql
+│   ├── 03_optimization.sql
+│   ├── 04_security.sql
+│   └── 05_semi_structured.sql
 │
+├── architecture_diagram.png
+├── dashboard_screenshot.png
 ├── requirements.txt
 ├── .gitignore
 └── README.md
@@ -117,17 +139,19 @@ Social-Media-Sentiment-Analysis-Pipeline/
 
 ## ⚙ Data Pipeline Flow
 
-### 🔄 Batch ETL
+### 🔄 Modular ETL
 
 ```
 Extract → Clean → Transform → Sentiment Scoring → Load
 ```
 
-- Removes noise (URLs, mentions, symbols)
-- Applies VADER sentiment scoring
-- Generates structured dataset
-- Builds surrogate keys for dimensions
-- Constructs fact table
+- Data extraction from raw Twitter dataset
+- Regex-based text cleaning
+- VADER sentiment scoring
+- Sentiment classification (Positive / Negative / Neutral)
+- Date normalization
+- Structured logging
+- Config-based thresholds
 
 ---
 
@@ -153,8 +177,8 @@ Designed for efficient OLAP-style analytical querying.
 Examples of insights generated:
 
 - 📊 Sentiment distribution by date
-- 📅 Rolling 7-day sentiment average
-- 🏆 Most negative days ranking
+- 📅 Rolling average sentiment trend
+- 🏆 Most positive/negative days ranking
 - 📈 Trend analysis using window functions
 - 🔍 Sentiment segmentation by platform/location
 - ⚡ Hybrid Spark + Snowflake analytics
@@ -168,8 +192,8 @@ Implemented using enterprise design principles:
 - Role-Based Access Control (RBAC)
 - Secure View-based column masking
 - Schema-level privilege management
-- Separation of administrative roles
 - Least privilege enforcement model
+- Separation of administrative roles
 
 ---
 
@@ -177,15 +201,32 @@ Implemented using enterprise design principles:
 
 ### 🚀 Apache Spark Batch Processing
 
-- Aggregates sentiment counts
-- Computes daily averages
-- Handles 1.6M+ records efficiently
+- Sentiment distribution aggregation
+- Daily average sentiment calculation
+- Distributed computation over large dataset
 
 ### 🔄 Structured Streaming (Simulation)
 
-- Real-time sentiment aggregation simulation
-- Micro-batch processing model
-- Continuous sentiment monitoring concept
+- Micro-batch processing concept
+- Continuous aggregation demonstration
+- Real-time analytics simulation
+
+---
+
+## 📊 Interactive Dashboard
+
+Built using Streamlit and Plotly.
+
+Features:
+
+- KPI metrics (Total, Positive, Negative, Neutral)
+- Sentiment distribution pie chart
+- Daily sentiment trend line chart
+- Sentiment score histogram
+- Platform-based segmentation
+- Interactive filtering (date & sentiment)
+
+![Dashboard Preview](dashboard_screenshot.png)
 
 ---
 
@@ -200,14 +241,13 @@ pip install -r requirements.txt
 ### 2️⃣ Run ETL Pipeline
 
 ```bash
-python etl.py
+cd etl
+python main.py
 ```
 
-### 3️⃣ Generate Warehouse Tables
+### 3️⃣ Execute Snowflake SQL Scripts
 
-```bash
-python warehouse_prep.py
-```
+Run scripts inside Snowflake worksheet from `sql/` folder.
 
 ### 4️⃣ Run Spark Batch Job
 
@@ -215,10 +255,11 @@ python warehouse_prep.py
 py -3.10 spark_batch.py
 ```
 
-### 5️⃣ Run Streaming Simulation
+### 5️⃣ Launch Dashboard
 
 ```bash
-py -3.10 spark_streaming.py
+cd dashboard
+streamlit run app.py
 ```
 
 ---
@@ -228,12 +269,15 @@ py -3.10 spark_streaming.py
 This project showcases:
 
 ✅ End-to-end Data Engineering pipeline  
+✅ Modular ETL architecture  
 ✅ Cloud Data Warehouse implementation  
 ✅ Big Data processing with Spark  
+✅ Semi-structured data handling  
 ✅ Advanced SQL analytics mastery  
 ✅ Enterprise security design  
 ✅ Performance tuning techniques  
 ✅ Production-style project organization  
+✅ Interactive analytical visualization  
 
 ---
 
