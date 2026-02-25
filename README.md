@@ -108,8 +108,6 @@ Interactive Streamlit Dashboard
 Social-Media-Sentiment-Analysis-Pipeline/
 │
 ├── etl/
-│   ├── config.py
-│   ├── logger.py
 │   ├── extract.py
 │   ├── transform.py
 │   ├── load.py
@@ -118,19 +116,18 @@ Social-Media-Sentiment-Analysis-Pipeline/
 ├── dashboard/
 │   └── app.py
 │
-├── spark_batch.py
+├── warehouse_prep.py
 ├── spark_streaming.py
 │
 ├── sql/
 │   ├── 01_schema_setup.sql
 │   ├── 02_advanced_queries.sql
 │   ├── 03_optimization.sql
-│   ├── 04_security.sql
-│   └── 05_semi_structured.sql
+│ 
+│   
 │
 ├── architecture_diagram.png
 ├── dashboard_screenshot.png
-├── requirements.txt
 ├── .gitignore
 └── README.md
 ```
@@ -150,8 +147,6 @@ Extract → Clean → Transform → Sentiment Scoring → Load
 - VADER sentiment scoring
 - Sentiment classification (Positive / Negative / Neutral)
 - Date normalization
-- Structured logging
-- Config-based thresholds
 
 ---
 
@@ -226,7 +221,9 @@ Features:
 - Platform-based segmentation
 - Interactive filtering (date & sentiment)
 
-![Dashboard Preview](dashboard_screenshot.png)
+![Dashboard Preview](dashboard_screenshot.png) 
+![Dashboard Preview](dash.png) 
+                     
 
 ---
 
