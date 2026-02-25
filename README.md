@@ -106,8 +106,7 @@ Social-Media-Sentiment-Analysis-Pipeline/
 ├── sql/
 │   ├── 01_schema_setup.sql
 │   ├── 02_advanced_queries.sql
-│   ├── 03_optimization.sql
-│   └── 04_security.sql
+│   └── 03_security.sql
 │
 ├── requirements.txt
 ├── .gitignore
